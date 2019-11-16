@@ -21,6 +21,18 @@ class Api::V1::SessionsController < Devise::SessionsController
       json_response "Log out Successfully", true, {}, :ok
     end
   
+    # active Token
+    def active_token
+        if authenticate_with_token!
+            json_response "authorized", false, {user:@current_user}, :authorized
+
+        else
+            json_response "Unauthorized", false, {}, :unauthorized
+
+        end
+    
+    end
+
     private
     def sign_in_params
       params.require(:sign_in).permit(:email, :password)
