@@ -7,7 +7,7 @@ Rails.application.routes.draw do
         post "sign_up", to: "registrations#create"
         post "sign_in", to: "sessions#create"
         delete "log_out", to: "sessions#destroy"
-        get "active", to: "session#active_token"
+        get "active", to: "sessions#active_token"
       end
 
       post "facebook", to: "users#facebook"
